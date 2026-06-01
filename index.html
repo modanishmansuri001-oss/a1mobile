@@ -1200,6 +1200,18 @@ identifier: number,
 
 success: async function(data){
 
+let check = await getdoc(doc(window.db,"verifiednumbers",number));
+
+     if(check.existes()){alert("number Already Verified"));
+return;
+                        }
+     await setDoc(doc(window.db,"verifiedNumbers",number),
+                  {
+                       mobile:number,
+                       date:new date().toISOString()
+                  }
+                  );
+     
 user.points = Number(user.points || 0) + 300;
 
 user.totalLeads =
