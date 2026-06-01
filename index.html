@@ -1200,17 +1200,23 @@ identifier: number,
 
 success: async function(data){
 
-let check = await getdoc(doc(window.db,"verifiednumbers",number));
+let check = await getDoc(
+doc(window.db,"verifiedNumbers",number)
+);
 
-     if(check.existes()){alert("number Already Verified"));
+if(check.exists()){
+alert("Number Already Verified");
 return;
-                        }
-     await setDoc(doc(window.db,"verifiedNumbers",number),
-                  {
-                       mobile:number,
-                       date:new date().toISOString()
-                  }
-                  );
+}
+
+await setDoc(
+doc(window.db,"verifiedNumbers",number),
+{
+mobile:number,
+date:new Date().toISOString()
+}
+);
+
      
 user.points = Number(user.points || 0) + 300;
 
