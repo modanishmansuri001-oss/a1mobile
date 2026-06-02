@@ -973,6 +973,10 @@ Back
 </button>
 </div>
 
+<button onclick="openLeadDetails()">
+📱 Lead Details
+</button>
+
 <button onclick="backAdmin()">
 ⬅ Back
 </button>
@@ -1145,6 +1149,61 @@ style="margin-top:15px;">
 <h2>👥 Team Members</h2>
 <div id="teamList"></div>
 
+async function openLeadDetails(){
+
+document.getElementById("adminPage")
+.classList.add("hidden");
+
+document.getElementById("leadDetailsPage")
+.classList.remove("hidden");
+
+let snap = await window.getDocs(
+window.collection(window.db,"verifiedNumbers")
+);
+
+let html = "";
+
+snap.forEach((doc)=>{
+
+let data = doc.data();
+
+html += `
+<div style="
+padding:10px;
+margin:5px;
+border:1px solid #ddd;
+border-radius:10px;
+">
+
+📱 ${data.mobile}<br>
+
+👤 ${data.addedByName || "Old Lead"}<br>
+
+📅 ${data.date || ""}
+
+</div>
+`;
+
+});
+
+document.getElementById("leadDetailsList").innerHTML = html;
+
+}
+
+function backAdminFromLead(){
+
+document.getElementById("leadDetailsPage")
+.classList.add("hidden");
+
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+}
+
+window.openLeadDetails = openLeadDetails;
+window.backAdminFromLead = backAdminFromLead;
+
+
 <button onclick="backToAdmin()">
 ← Back
 </button>
@@ -1232,6 +1291,8 @@ await setDoc(
 doc(window.db,"verifiedNumbers",number),
 {
 mobile:number,
+addedBy:user.mobile,
+addedByName:user.name,
 date:new Date().toISOString()
 }
 );
