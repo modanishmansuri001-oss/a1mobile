@@ -76,7 +76,7 @@ left:0;
 /* ================= 
       CONTAINER 
   ================= */
-     .container{
+.container{
     width:100%;
     max-width:100%;
     margin:0;
@@ -966,6 +966,13 @@ Back
 🔄 Refresh Data
 </button>
 
+<h3>👥 Team Members</h3>
+
+<button onclick="openTeamPage()">
+👥 Team Members
+</button>
+</div>
+
 <button onclick="backAdmin()">
 ⬅ Back
 </button>
@@ -1132,6 +1139,18 @@ style="margin-top:15px;">
 
 <button onclick="backAdmin()">Back</button>
 </div>
+
+<div id="teamPage" class="hidden">
+
+<h2>👥 Team Members</h2>
+<div id="teamList"></div>
+
+<button onclick="backToAdmin()">
+← Back
+</button>
+
+</div>
+
 <script>
   /* ================= 
    APP FUNCTIONS 
@@ -1200,8 +1219,8 @@ identifier: number,
 
 success: async function(data){
 
-let check = await getDoc(
-doc(window.db,"verifiedNumbers",number)
+let check = await window.getDoc(
+window.doc(window.db,"verifiedNumbers",number)
 );
 
 if(check.exists()){
@@ -1217,7 +1236,6 @@ date:new Date().toISOString()
 }
 );
 
-     
 user.points = Number(user.points || 0) + 300;
 
 user.totalLeads =
@@ -1642,6 +1660,8 @@ document.getElementById("loginPage")
 document.getElementById("adminPage")
 .classList.remove("hidden");
 
+loadAdminData();
+
 }else{
 
 alert("Wrong Admin Password");
@@ -1661,6 +1681,7 @@ document.getElementById("adminPage")
 .classList.remove("hidden");
 
 loadAdminData();
+loadTeamList();
 
 }
 
@@ -1700,6 +1721,55 @@ document.getElementById("totalRewards").innerText = totalRewards;
 
 }
 
+
+async function loadTeamList(){
+
+let usersSnap = await window.getDocs(
+window.collection(window.db,"users")
+);
+
+let html = "";
+
+usersSnap.forEach((doc)=>{
+
+let data = doc.data();
+
+html += `
+<div style="
+padding:10px;
+margin:5px;
+border:1px solid #ddd;
+border-radius:10px;
+">
+
+<b>${data.name}</b><br>
+
+📱 ${data.mobile}<br>
+
+👥 Referrals:
+${data.totalReferrals || 0}<br>
+
+🔥 Leads:
+${data.totalLeads || 0}<br>
+
+💰 Points:
+${data.points || 0}
+
+</div>
+`;
+
+});
+
+
+document.getElementById("teamList").innerHTML = html;
+if(html === ""){
+document.getElementById("teamList").innerHTML =
+"No Team Members Found";
+}
+
+window.loadTeamList = loadTeamList;
+console.log("loadTeamList exported");
+}
 /* ================= 
      SIDE MENU 
 ================= */
@@ -1875,7 +1945,9 @@ document.getElementById("loginPage")
 }
 
 </script>
+
 <script type="module">
+  alert("Firebase Loaded");
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 
@@ -1902,6 +1974,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 alert("Firebase Loaded");
 const db = getFirestore(app);
+alert("Firestore Loaded");
 
 window.db = db;
 alert("db = " + typeof db);
@@ -1915,7 +1988,6 @@ window.setDoc = setDoc;
 window.updateDoc = updateDoc;
 window.getDocs = getDocs;
 window.collection = collection;
-
 
 console.log("Firebase Connected");
 function openRegister(){
@@ -2317,6 +2389,29 @@ document.getElementById("profilePage")
 window.openHistoryPage = openHistoryPage;
 window.backProfile = backProfile;
 
+function openTeamPage(){
+
+document.getElementById("adminPage")
+.classList.add("hidden");
+
+document.getElementById("teamPage")
+.classList.remove("hidden");
+
+loadTeamList();
+
+}
+
+function backToAdmin(){
+
+document.getElementById("teamPage")
+.classList.add("hidden");
+
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+}
+window.openTeamPage = openTeamPage;
+window.backToAdmin = backToAdmin;
 </script>
 <script src="https://verify.msg91.com/otp-provider.js"></script>
 </body>
