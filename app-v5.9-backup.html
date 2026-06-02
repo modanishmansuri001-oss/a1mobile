@@ -1,0 +1,2324 @@
+<!-- =========================
+     A1 MOBILE REFERRAL SYSTEM
+========================= -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>A1 Mobile Referral System</title>
+<!-- =================
+         CSS START
+     ================= -->
+  <style>
+  /* =================
+          TOPBAR 
+     ================= */
+  .topbar{
+  width:100%;
+  background:#007bff;
+  color:white;
+  padding:15px;
+  font-size:22px;
+  display:flex;
+  align-items:center;
+}
+/* ================= 
+       MENU BUTTON
+  ================= */
+.menu-btn{
+  cursor:pointer;
+  margin-right:20px;
+  font-size:28px;
+}
+/* ================= 
+      APP TITLE 
+ ================= */
+.app-title{
+  font-weight:bold;
+}
+/* ================= 
+        SIDE MENU
+  ================= */
+.side-menu{
+  height:100%;
+  width:0;
+  position:fixed;
+  top:0;
+  left:0;
+  background:white;
+  overflow-x:hidden;
+  transition:0.3s;
+  padding-top:60px;
+  box-shadow:0 0 10px rgba(0,0,0,0.3);
+  z-index:9999;
+}
+/* ================= 
+      MENU ITEMS 
+  ================= */
+.side-menu .menu-item{
+  padding:15px;
+  border-bottom:1px solid #ddd;
+  font-size:18px;
+}
+/* ================= 
+      MENU OPEN
+================= */
+.show{
+left:0;
+}
+/*================= BODY =================*/
+    body{
+      font-family: Arial;
+      background:#f2f2f2;
+      margin:0;
+      padding:0;
+    }
+/* ================= 
+      CONTAINER 
+  ================= */
+     .container{
+    width:100%;
+    max-width:100%;
+    margin:0;
+    min-height:100vh;
+    padding:20px;
+    box-sizing:border-box;
+}
+    /* ================= ADVANCED LOGIN ================= */
+
+#loginPage{
+
+margin-top:80px;
+
+background:rgba(255,255,255,0.15);
+
+backdrop-filter:blur(15px);
+
+border-radius:30px;
+
+padding:30px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+
+border:1px solid rgba(255,255,255,0.2);
+
+animation:fadeLogin 1s ease;
+
+}
+
+#loginPage h2{
+
+color:#007bff;
+
+font-size:32px;
+
+margin-bottom:25px;
+
+}
+
+#loginPage input{
+
+background:rgba(255,255,255,0.9);
+
+border:none;
+
+padding:16px;
+
+font-size:18px;
+
+border-radius:15px;
+
+margin-top:15px;
+
+}
+
+#loginPage button{
+
+background:linear-gradient(135deg,#007bff,#0056d6);
+
+padding:16px;
+
+font-size:20px;
+
+border-radius:15px;
+
+font-weight:bold;
+
+box-shadow:0 5px 15px rgba(0,123,255,0.3);
+
+}
+
+@keyframes fadeLogin{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+/* =================
+        HEADINGS
+  ================= */
+    h2,h3{
+      text-align:center;
+    }
+/* ================= 
+    INPUT FIELDS 
+ ================= */
+    input{
+      width:100%;
+      padding:12px;
+      margin-top:10px;
+      border:1px solid #ccc;
+      border-radius:5px;
+      box-sizing:border-box;
+    }
+/* =================
+       BUTTONS 
+ ================= */
+    button{
+      width:100%;
+      padding:12px;
+      margin-top:15px;
+      border:none;
+      background:#007bff;
+      color:white;
+      border-radius:5px;
+      font-size:16px;
+      cursor:pointer;
+    }
+/* ================= 
+    BUTTON HOVER
+  ================= */
+    button:hover{
+      background:#0056b3;
+    }
+    .hidden{
+display:none;
+}
+/* ================= 
+     SIDE MENU V2 
+  ================= */
+.side-menu{
+position:fixed;
+top:0;
+left:-250px;
+width:250px;
+height:100%;
+background:white;
+transition:0.3s;
+z-index:9999;
+}
+/* ================= 
+   SIDE MENU OPEN
+  ================= */
+.side-menu.show{
+left:0;
+}
+/* ================= CARDS ===============*/
+    .card{
+      background:#fafafa;
+      padding:15px;
+      margin-top:15px;
+      border-radius:8px;
+    }
+/* ================= 
+     REWARD POINTS
+  ================= */
+    .points{
+      font-size:22px;
+      color:green;
+      font-weight:bold;
+    }
+/* =================
+     MENU ITEMS
+ ================= */
+    .menu-item{
+      padding:12px;
+      border-bottom:1px solid #ddd;
+      font-size:18px;
+    }
+    /* ================= 
+      CLOSE BUTTON
+    ================= */
+    .close-btn{
+  position:absolute;
+  top:10px;
+  right:20px;
+  font-size:35px;
+  cursor:pointer;
+}
+/* =================
+    IMAGE SLIDER
+================= */
+.slider img{
+width:100%;
+height:auto;
+border-radius:20px;
+}
+/* ================= 
+  ACTIVE SLIDE 
+================= */
+.slide.active{
+display:block;
+}
+/* ================= 
+    EARN BUTTON 
+ ================= */
+.earn-btn{
+display:block;
+width:90%;
+
+margin:25px auto 0;
+
+padding:20px;
+
+font-size:22px;
+font-weight:bold;
+
+border:none;
+border-radius:20px;
+
+background:linear-gradient(135deg,#00b300,#008f00);
+
+color:white;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+transition:0.3s;
+}
+/* ================= 
+EARN BUTTON CLICK EFFECT 
+ ================= */
+.earn-btn:active{
+transform:scale(0.97);
+}
+/* ================= 
+  BANNER SLIDER
+================= */
+.banner-slider{
+  width:100%;
+  height:180px;
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+/* ================= 
+   SLIDER PHOTOS
+ ================= */
+.photo{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  position:absolute;
+  display:none;
+}
+/* ================= 
+    ACTIVE PHOTO
+ ================= */
+.active-photo{
+  display:block;
+}
+/* ================= 
+   IMAGE SLIDER
+================= */
+.slider{
+width:100%;
+overflow:hidden;
+}
+/* ================= 
+  SINGLE IMAGE
+================= */
+.slide{
+display:none;
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:20px;
+margin-bottom:10px;
+}
+/* =================
+  ACTIVE IMAGE 
+================= */
+.slide.active{
+display:block;
+}
+/* ================= 
+   TEXT SLIDER
+================= */
+.text-slider{
+background:linear-gradient(135deg,#007bff,#0056d6);
+color:white;
+padding:25px;
+border-radius:25px;
+margin-top:15px;
+margin-bottom:20px;
+min-height:170px;
+
+font-size:20px;
+font-weight:bold;
+line-height:1.7;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+transition:0.5s;
+overflow:hidden;
+}
+.textSlide{
+display:none;
+animation:fade 0.5s ease;
+}
+
+.textSlide.active{
+display:block;
+}
+/* =================
+  TEXT ANIMATION 
+================= */
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+/* =================
+    OTP POPUP 
+================= */
+.otp-popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+/* ================= 
+ OTP BOX DESIGN 
+================= */
+.otp-content{
+background:white;
+padding:25px;
+border-radius:20px;
+width:80%;
+text-align:center;
+}
+/* =================
+   OTP INPUT 
+================= */
+.otp-content input{
+width:90%;
+padding:12px;
+font-size:18px;
+margin-top:15px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+/* ================= 
+     OTP BUTTON
+ ================= */
+.otp-content button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#007bff;
+color:white;
+font-size:18px;
+border-radius:10px;
+}
+/* =================
+   OTP TIMER 
+================= */
+#timer{
+margin-top:15px;
+color:red;
+font-weight:bold;
+}
+/* =================
+ OTP BUTTON GROUP
+ ================= */
+.otp-buttons{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+/* ================= 
+ OTP BUTTON STYLE 
+ ================= */
+.otp-buttons button{
+flex:1;
+padding:14px;
+border:none;
+border-radius:12px;
+font-size:18px;
+color:white;
+}
+/* ================= 
+   VERIFY BUTTON 
+  ================= */
+#verifyBtn{
+background:#007bff;
+}
+/* ================= 
+   RESET BUTTON 
+================= */
+#resetBtn{
+background:#28a745;
+}
+/* ================= 
+ HIDDEN ELEMENT 
+================= */
+.hidden{
+display:none;
+}
+/* =================
+   PROFILE CARD
+  ================= */
+.profile-card{
+
+background:white;
+
+padding:20px;
+
+border-radius:20px;
+
+margin-top:20px;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+}
+/* ================= 
+PROFILE CARD TITLE 
+================= */
+.profile-card h2{
+
+margin-bottom:15px;
+
+}
+/* ================= 
+ PROFILE CARD TEXT 
+ ================= */
+.profile-card p{
+
+margin:10px 0;
+
+font-size:16px;
+
+}
+/* =================
+PROFILE CARD BUTTON 
+================= */
+.profile-card button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:15px;
+
+background:#007bff;
+
+color:white;
+
+font-size:18px;
+
+margin-top:15px;
+
+}
+#helpPopup{
+display:none;
+}
+/* ================= SPLASH SCREEN ================= */
+
+#splashScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#007bff,#0056d6);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:99999;
+color:white;
+font-family:Arial,sans-serif;
+transition:0.5s;
+}
+
+#splashScreen img{
+width:140px;
+height:140px;
+object-fit:cover;
+border-radius:30px;
+animation:zoomLogo 1.5s infinite alternate;}
+
+@keyframes zoomLogo{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
+}
+
+#splashScreen h1{
+margin-top:20px;
+font-size:32px;
+}
+
+#splashScreen p{
+margin-top:10px;
+font-size:18px;
+opacity:0.9;
+}
+/* ================= INTRO SCREEN ================= */
+
+.intro-slide{
+display:none;
+height:100vh;
+padding:20px;
+text-align:center;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+box-sizing:border-box;
+}
+
+.intro-slide.active{
+display:flex;
+}
+
+.intro-buttons{
+position:fixed;
+bottom:20px;
+left:0;
+right:0;
+display:flex;
+justify-content:center;
+gap:15px;
+z-index:999999;
+}
+
+.intro-buttons button{
+padding:14px 30px;
+border:none;
+border-radius:15px;
+background:#007bff;
+color:white;
+font-size:18px;
+font-weight:bold;
+}
+#introScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:99999;
+overflow:hidden;
+}
+.intro-buttons{
+position:absolute;
+bottom:20px;
+left:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:15px;
+}
+#introScreen{
+display:none;
+}
+  </style>
+
+</head>
+
+<body>
+  <!-- ================= SPLASH SCREEN ================= -->
+
+<div id="splashScreen">
+
+<img src="https://i.ibb.co/ks6dTrSr/file-0000000049f87207bbe4d99c33a4a8d1.png">
+
+<h1>A1 Mobile</h1>
+
+<p>Loading...</p>
+
+</div>
+
+<!-- ================= INTRO SCREEN ================= -->
+
+<div id="introScreen">
+
+<div class="intro-slide active">
+
+<img src="https://i.ibb.co/ks6dTrSr/file-0000000049f87207bbe4d99c33a4a8d1.png">
+
+<h1>Earn Rewards</h1>
+
+<p>Share OTP leads and earn reward points daily 💰</p>
+
+</div>
+
+<div class="intro-slide">
+
+<img src="https://i.ibb.co/ks6dTrSr/file-0000000049f87207bbe4d99c33a4a8d1.png">
+
+<h1>Fast Verification</h1>
+
+<p>Verify OTP quickly and collect reward points instantly 🔐</p>
+
+</div>
+
+<div class="intro-slide">
+
+<img src="https://i.ibb.co/ks6dTrSr/file-0000000049f87207bbe4d99c33a4a8d1.png">
+
+<h1>Instant Withdraw</h1>
+
+<p>Withdraw earnings directly to your UPI account 🚀</p>
+
+</div>
+
+<div class="intro-buttons">
+
+<button onclick="nextIntro()">Next</button>
+
+<button onclick="closeIntro()">Skip</button>
+
+</div>
+
+</div>
+
+<!-- TOP BAR -->
+
+<div class="topbar hidden" id="topbar">
+
+  <span class="menu-btn" onclick="openMenu()">☰</span>
+
+  <span class="app-title">A1 Mobile</span>
+</div>
+
+<!-- SIDE MENU -->
+
+<div id="sideMenu" class="side-menu hidden">
+  
+  <span class="close-btn" onclick="closeMenu()">×</span>
+  
+<!-- MENU ITEMS -->
+  <h3>Menu</h3>
+
+<div class="menu-item" onclick="openProfile()">
+👤 Profile
+</div>
+
+  <div class="menu-item">
+    💰 Reward Points:
+    <span id="menuPoints">0</span>
+</div>
+   
+<div class="menu-item" onclick="openHelpPopup()">
+🛠️ Help & Support
+</div>
+
+<div class="menu-item" onclick="openFollowPopup()">
+🔗 Follow Link
+</div>
+  
+  <div class="menu-item" onclick="openInfo()">
+  ℹ️ Info
+</div>
+
+
+</div>
+</div>
+<!-- LOGIN PAGE -->
+
+<div class="container hidden" id="loginPage">
+
+ <img 
+src="https://i.ibb.co/ks6dTrSr/file-0000000049f87207bbe4d99c33a4a8d1.png"
+style="
+width:110px;
+display:block;
+margin:0 auto 20px;
+border-radius:25px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+">
+
+<h2>Welcome Back 😎</h2>
+
+  <input type="text" id="mobile" placeholder="Mobile Number">
+
+  <input type="password" id="pin" placeholder="PIN">
+
+  <button onclick="login()">Login</button>
+  <button onclick="openRegister()">
+📝 Register
+</button>
+<button onclick="openAdminLogin()">
+👨‍💼 Admin Login
+</button>
+
+</div>
+<div class="container hidden" id="registerPage">
+
+<h2>Create Account</h2>
+
+<input type="text" id="regName" placeholder="Full Name">
+
+<input type="text" id="regMobile" placeholder="Mobile Number">
+
+<input type="password" id="regPin" placeholder="Create PIN">
+
+<input
+id="referralCode"
+type="text"
+placeholder="Referral Code (Optional)"
+class="input-field">
+
+<button onclick="registerUser()">
+Create Account
+</button>
+
+<button onclick="backLogin()">
+Back To Login
+</button>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div class="container hidden" id="dashboard">
+  
+<!-- DASHBOARD CONTENT -->
+  <h2>Dashboard</h2>
+  <!-- PHOTO SLIDER -->
+<div class="slider">
+<!-- SLIDE IMAGES -->
+<img class="slide"
+src="https://i.ibb.co/LhrpN17d/banner1.png">
+
+<img class="slide"
+src="https://i.ibb.co/sJcxScvW/banner2.png">
+
+<img class="slide"
+src="https://i.ibb.co/gb2kPs8T/banner3.png">
+
+</div>
+
+<!-- TEXT SLIDER -->
+<div class="text-slider">
+<!-- TEXT SLIDES -->
+<div class="textSlide active">
+💰 Earn Money By Sharing OTP Leads
+<br><br>
+✨ हर नंबर पर पॉइंट्स कमाओ 😄
+</div>
+
+<div class="textSlide">
+📲 Add Customer Number
+<br><br>
+✅ OTP Verify → Earn Rewards
+</div>
+
+<div class="textSlide">
+🚀 Withdraw Your Earnings
+<br><br>
+💸 Direct UPI Payment
+</div>
+
+</div> <!-- YE IMPORTANT HAI -->
+
+<!-- EARN BUTTON -->
+
+<button class="earn-btn" onclick="openEarn()">
+💰 EARN NOW
+</button>
+</div>
+</div>
+<!-- PROFILE PAGE -->
+
+<div class="container hidden" id="profilePage">
+  
+<!-- PROFILE CARD -->
+<div class="profile-card">
+  
+<!-- PROFILE HEADING -->
+<h2>👤 My Profile</h2>
+
+<!-- PROFILE DETAILS -->
+<p><b>Name:</b> <span id="profileName"></span></p>
+
+<p><b>Mobile:</b> <span id="profileMobile"></span></p>
+
+<p><b>UPI ID:</b> <span id="profileUpi"></span></p>
+
+<p><b>Reward Points:</b> <span id="profilePoints"></span></p>
+
+<p><b>Joined:</b> <span id="profileJoined"></span></p>
+
+<p>Referral Status:
+<span id="refStatus">Locked 🔒</span>
+</p>
+
+<p>
+<b>Referral Code:</b>
+<span id="profileRefCode"></span>
+
+<button onclick="copyRefCode()">
+📋 Copy
+</button>
+
+</p>
+
+<button onclick="addUpi()">
+Add UPI
+</button>
+
+<button onclick="openWithdraw()">
+💸 Withdraw Points
+</button>
+
+<button onclick="openHistoryPage()">
+📜 Withdrawal History
+</button>
+
+<button onclick="backDashboard()">
+⬅ Back
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="withdrawPage" class="hidden">
+
+<h2>💸 Withdraw Request</h2>
+
+<input
+id="withdrawPoints"
+type="number"
+placeholder="Enter Points">
+
+<button onclick="withdrawRequest()">
+Submit Request
+</button>
+
+<button onclick="showProfile()">
+Back
+</button>
+
+</div>
+
+<div id="historyPage" class="container hidden">
+
+<h2>📜 Withdrawal History</h2>
+
+<div id="historyList"></div>
+
+<button onclick="backProfile()">
+← Back
+</button>
+
+</div>
+
+<!-- ADMIN PAGE -->
+
+<div class="container hidden" id="adminPage">
+
+<div class="profile-card">
+
+<h2>👨‍💼 Admin Panel</h2>
+
+<p><b>Total Users:</b> <span id="totalUsers">0</span></p>
+
+<p><b>Total Leads:</b> <span id="totalLeads">0</span></p>
+
+<p><b>Total Reward Points:</b> <span id="totalRewards">0</span></p>
+
+<button onclick="openWithdrawAdmin()">
+📋 Withdraw Requests
+</button>
+
+<button onclick="loadAdminData()">
+🔄 Refresh Data
+</button>
+
+<button onclick="backAdmin()">
+⬅ Back
+</button>
+
+</div>
+
+</div>
+
+<!-- OTP POPUP -->
+<div id="otpBox" class="otp-popup">
+
+<!-- OTP CONTENT -->
+<div class="otp-content">
+
+<!-- OTP HEADING -->
+<h2>🔐 Enter OTP</h2>
+
+<!-- OTP INPUT -->
+<input type="number"
+id="otpInput"
+placeholder="Enter OTP">
+
+<!-- OTP TIMER -->
+<p id="timer">⏳ OTP expires in 30s</p>
+
+<!-- OTP BUTTONS -->
+<div class="otp-buttons">
+
+<!-- VERIFY BUTTON -->
+<button id="verifyBtn"
+onclick="verifyOTP()">
+Verify OTP
+</button>
+
+<!-- RESET BUTTON -->
+<button id="resetBtn"
+onclick="resetOTP()"
+style="display:none;">
+Reset OTP
+</button>
+</div>
+</div>
+</div>
+<!-- HELP POPUP -->
+<div id="helpPopup" class="otp-popup hidden">
+
+<!-- HELP CONTENT -->
+<div class="otp-content">
+
+<!-- HELP HEADING -->
+<h2>🛠️ Help & Support</h2>
+
+<!-- HELP TEXT -->
+<p style="margin-top:15px;">
+Need help? Contact us 👇
+</p>
+
+<!-- INSTAGRAM BUTTON -->
+<button onclick="openInstagram()"
+style="background:#E1306C;margin-top:15px;">
+
+📸 Instagram
+
+</button>
+
+<!-- WHATSAPP BUTTON -->
+<button onclick="openWhatsapp()"
+style="background:#25D366;margin-top:15px;">
+
+💬 WhatsApp Support
+
+</button>
+
+<!-- CLOSE HELP POPUP -->
+<button onclick="closeHelpPopup()"
+style="margin-top:15px;">
+
+❌ Close
+
+</button>
+
+</div>
+
+</div>
+<!-- FOLLOW POPUP -->
+
+<div id="followPopup" class="otp-popup hidden">
+
+<!-- FOLLOW CONTENT -->
+<div class="otp-content">
+
+<!-- FOLLOW HEADING -->
+<h2>🔗 Follow Us</h2>
+
+<!-- FOLLOW TEXT -->
+<p style="margin-top:15px;">
+Join our social platforms 🚀
+</p>
+
+<!-- WEBSITE BUTTON -->
+<button onclick="openWebsite()"
+style="background:#007bff;margin-top:15px;">
+
+🌐 Website
+
+</button>
+
+<!-- INSTAGRAM BUTTON -->
+<button onclick="openInstagram()"
+style="background:#E1306C;margin-top:15px;">
+
+📸 Instagram
+
+</button>
+
+<button onclick="openWhatsappChannel()"
+style="background:#25D366;margin-top:15px;">
+
+<!-- WHATSAPP CHANNEL BUTTON -->
+💬 WhatsApp Channel
+
+</button>
+
+<!-- YOUTUBE CHANNEL BUTTON -->
+<button onclick="openYoutube()"
+style="background:red;margin-top:15px;">
+
+▶️ YouTube
+
+</button>
+
+<!-- CLOSE FOLLOW POPUP -->
+<button onclick="closeFollowPopup()"
+style="margin-top:15px;">
+
+❌ Close
+
+</button>
+
+</div>
+
+</div>
+
+<div id="withdrawAdminPage" class="hidden">
+<h2>Withdraw Requests</h2>
+
+<button onclick="filterWithdraw('pending')">
+⏳ Pending
+</button>
+
+<button onclick="filterWithdraw('approved')">
+✅ Approved
+</button>
+
+<button onclick="filterWithdraw('rejected')">
+❌ Rejected
+</button>
+
+<br><br>
+
+<div id="withdrawList"></div>
+
+<div id="withdrawList"></div>
+
+<button onclick="backAdmin()">Back</button>
+</div>
+<script>
+  /* ================= 
+   APP FUNCTIONS 
+  ================= */
+  
+  /* =================
+     APP INFO POPUP 
+  ================= */
+function openInfo(){
+
+  alert(
+`📱 APP INFO
+
+1. Customer Number Add Karo
+
+2. OTP Verify Karo
+
+3. Har Lead Par Reward Points Milenge
+
+4. UPI Se Withdraw Kar Sakte Ho
+
+5. Jyada Leads = Jyada Earning 😄`
+  );
+
+}
+/* ================= 
+   IMAGE SLIDER
+================= */
+  let slides = document.querySelectorAll(".slide");
+
+let index = 0;
+
+setInterval(()=>{
+
+  slides[index].classList.remove("active");
+
+  index = (index + 1) % slides.length;
+
+  slides[index].classList.add("active");
+
+},3000);
+/* ================= 
+  APP VARIABLES 
+================ */
+let rewardPoints = 0;
+
+let generatedOTP = "1234";
+
+let timeLeft = 30;
+
+let timerInterval;
+/* =================
+    OTP SYSTEM 
+================= */
+function openEarn(){
+
+alert(typeof window.initSendOTP);
+let number = prompt("📱 Enter Customer Number");
+
+if(!number) return;
+
+var configuration = {
+widgetId: "366545743059323634343735",
+tokenAuth: "514362TgMDsByeCxf6a1c900aP1",
+identifier: number,
+
+success: async function(data){
+
+let check = await getDoc(
+doc(window.db,"verifiedNumbers",number)
+);
+
+if(check.exists()){
+alert("Number Already Verified");
+return;
+}
+
+await setDoc(
+doc(window.db,"verifiedNumbers",number),
+{
+mobile:number,
+date:new Date().toISOString()
+}
+);
+
+     
+user.points = Number(user.points || 0) + 300;
+
+user.totalLeads =
+Number(user.totalLeads || 0) + 1;
+
+updatePoints();
+
+await window.updateDoc(
+window.doc(window.db,"users",user.mobile),
+{
+points:user.points,
+totalLeads:user.totalLeads
+}
+);
+
+alert("✅ OTP Verified Successfully");
+},
+
+failure:function(error){
+
+alert("❌ OTP Verification Failed");
+
+console.log(error);
+
+}
+};
+alert(typeof window.initSendOTP);
+window.initSendOTP(configuration);
+
+}
+
+/* =================
+     OTP RESET 
+================= */
+function resetOTP(){
+
+generatedOTP = "1234";
+
+// clear input
+document.getElementById("otpInput").value = "";
+
+// show verify button
+document.getElementById("verifyBtn").style.display = "block";
+
+// hide reset button
+document.getElementById("resetBtn").style.display = "none";
+
+// restart timer
+timeLeft = 30;
+
+document.getElementById("timer").innerText =
+"⏳ OTP expires in 30s";
+
+clearInterval(timerInterval);
+
+timerInterval = setInterval(function(){
+
+timeLeft--;
+
+document.getElementById("timer").innerText =
+"⏳ OTP expires in " + timeLeft + "s";
+
+if(timeLeft <= 0){
+
+clearInterval(timerInterval);
+
+document.getElementById("timer").innerText =
+"❌ OTP Expired";
+
+document.getElementById("verifyBtn").style.display = "none";
+
+document.getElementById("resetBtn").style.display = "block";
+
+}
+
+},1000);
+
+alert("📩 New OTP Sent Successfully");
+
+}
+  // USER DATA
+
+  let user = {};
+
+  // LOGIN FUNCTION
+
+async function login(){
+
+let mobile =
+document.getElementById("mobile").value;
+
+let pin =
+document.getElementById("pin").value;
+
+let userSnap;
+try {
+  
+
+   const userRef = window.doc(window.db, "users", mobile);
+userSnap = await window.getDoc(userRef);
+
+   if(userSnap.exists()){
+
+
+   user = userSnap.data();
+   user.mobile = mobile;
+user.points = Number(user.points || 0);
+
+user.points;
+   user.mobile = mobile;
+   user.points = Number(user.points || 0);
+
+   if(pin == user.pin){
+
+      document.getElementById("loginPage")
+.classList.add("hidden");
+
+document.getElementById("dashboard")
+.classList.remove("hidden");
+
+document.getElementById("topbar")
+.classList.remove("hidden");
+
+document.getElementById("sideMenu")
+.classList.remove("hidden");
+
+updatePoints();
+
+   }else{
+
+      alert("WRONG PIN");
+
+   }
+
+}else{
+
+   alert("USER NOT FOUND");
+
+}
+
+} catch(error) {
+
+   alert("ERROR = " + error.message);
+
+}
+}
+
+  // UPDATE POINTS
+
+function updatePoints(){
+
+
+document.getElementById("profilePoints").innerText =
+Number(user.points || 0);
+
+document.getElementById("menuPoints").innerText =
+Number(user.points || 0);
+
+document.getElementById("profileName").innerText =
+user.name;
+
+document.getElementById("profileJoined").innerText =
+user.joined || "N/A";
+
+if((user.totalLeads || 0) >= 20){
+document.getElementById("refStatus")
+.innerText = "Unlocked 🔓";
+}else{
+document.getElementById("refStatus")
+.innerText = "Locked 🔒";
+}
+
+document.getElementById("totalLeads")
+.innerText = user.totalLeads || 0;
+
+}
+
+  // SEND OTP
+
+  function sendOTP(){
+
+    let number = document.getElementById("customerNumber").value;
+
+    if(number == ""){
+
+      alert("Enter Customer Number");
+
+      return;
+
+    }
+
+
+    document.getElementById("otpSection").classList.remove("hidden");
+
+  }
+
+  // VERIFY OTP
+/* ================= 
+      OTP VERIFY 
+================= */
+ 
+
+  // SAVE UPI
+
+  async function saveUPI(){
+
+let upi = document.getElementById("upi").value;
+
+user.upi = upi;
+
+await updateDoc(
+doc(window.db,"users",user.mobile),
+{
+upi: upi
+}
+);
+
+alert("✅ UPI Added Successfully");
+
+}
+
+let photos =
+document.querySelectorAll(".photo");
+
+let photoIndex = 0;
+
+setInterval(()=>{
+
+  photos[photoIndex]
+  .classList.remove("active-photo");
+
+  photoIndex =
+  (photoIndex + 1)
+  % photos.length;
+
+  photos[photoIndex]
+  .classList.add("active-photo");
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function showSlides(){
+
+slides.forEach(slide => {
+slide.classList.remove("active");
+});
+
+slides[index].classList.add("active");
+
+index++;
+
+if(index >= slides.length){
+index = 0;
+}
+
+}
+
+showSlides();
+
+setInterval(showSlides,5000);
+},3000);
+let textSlides = document.querySelectorAll(".textSlide");
+
+let textIndex = 0;
+
+function showTextSlides(){
+
+textSlides.forEach(slide => {
+slide.classList.remove("active");
+});
+
+textSlides[textIndex].classList.add("active");
+
+textIndex++;
+
+if(textIndex >= textSlides.length){
+textIndex = 0;
+}
+
+}
+
+showTextSlides();
+
+setInterval(showTextSlides,3000);
+
+function loadProfile(){
+
+document.getElementById("profileName")
+.innerText = user.name
+
+document.getElementById("profileMobile")
+.innerText = user.mobile;
+
+document.getElementById("profileUpi")
+.innerText = user.upi || "Not Added";
+
+document.getElementById("profilePoints")
+.innerText = user.points;
+
+document.getElementById("profileRefCode")
+.innerText = user.refCode || "Not Generated";
+
+if((user.totalLeads || 0) < 20){
+
+document.getElementById("profileRefCode")
+.style.display = "none";
+
+}else{
+
+document.getElementById("profileRefCode")
+.style.display = "inline";
+
+document.getElementById("profileRefCode")
+.innerText = user.refCode;
+
+}
+
+document.getElementById("profileJoined")
+.innerText = user.joined;
+
+
+document.getElementById("totalLeads")
+.innerText = user.totalLeads || 0;
+
+if((user.totalLeads || 0) >= 20){
+
+document.getElementById("refStatus")
+.innerText = "Unlocked 🔓";
+
+}else{
+
+document.getElementById("refStatus")
+.innerText = "Locked 🔒";
+
+}
+}
+
+async function addUpi(){
+
+let upi = prompt("Enter UPI ID");
+
+if(upi == "" || upi == null){
+return;
+}
+
+user.upi = upi;
+
+await window.updateDoc(
+window.doc(window.db,"users",user.mobile),
+{
+upi: upi
+}
+);
+
+loadProfile();
+
+alert("✅ UPI Added Successfully");
+
+}
+
+/* ================= 
+    PROFILE PAGE
+  ================= */
+function openProfile(){
+
+closeMenu();
+
+// dashboard hide
+document.getElementById("dashboard")
+.classList.add("hidden");
+
+// profile show
+document.getElementById("profilePage")
+.classList.remove("hidden");
+
+// profile data load
+loadProfile();
+
+}
+function openAdminPanel(){
+
+closeMenu();
+
+// dashboard hide
+document.getElementById("dashboard")
+.classList.add("hidden");
+
+// admin panel show
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+}
+
+function backAdmin(){
+
+document.getElementById("withdrawAdminPage")
+.classList.add("hidden");
+
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+}
+
+function backDashboard(){
+
+document.getElementById("profilePage")
+.classList.add("hidden");
+
+document.getElementById("dashboard")
+.classList.remove("hidden");
+
+}
+
+function openAdminLogin(){
+
+let pass = prompt("Enter Admin Password");
+
+if(pass == "Danishma@780"){
+
+document.getElementById("loginPage")
+.classList.add("hidden");
+
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+}else{
+
+alert("Wrong Admin Password");
+
+}
+
+}
+
+function openAdminPanel(){
+
+closeMenu();
+
+document.getElementById("dashboard")
+.classList.add("hidden");
+
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+loadAdminData();
+
+}
+
+function backAdminDashboard(){
+
+document.getElementById("adminPage")
+.classList.add("hidden");
+
+document.getElementById("dashboard")
+.classList.remove("hidden");
+
+}
+
+async function loadAdminData(){
+
+let usersSnap = await window.getDocs(
+window.collection(window.db,"users")
+);
+
+let totalUsers = usersSnap.size;
+
+let totalLeads = 0;
+let totalRewards = 0;
+
+usersSnap.forEach((doc)=>{
+let data = doc.data();
+
+
+totalLeads += Number(data.totalLeads || 0);
+totalRewards += Number(data.points || 0);
+});
+
+
+document.getElementById("totalUsers").innerText = totalUsers;
+document.getElementById("totalLeads").innerText = totalLeads;
+document.getElementById("totalRewards").innerText = totalRewards;
+
+}
+
+/* ================= 
+     SIDE MENU 
+================= */
+function openMenu(){
+
+document.getElementById("sideMenu")
+.classList.add("show");
+
+}
+
+/* ================= 
+    CLOSE MENU 
+================= */
+function closeMenu(){
+
+document.getElementById("sideMenu")
+.classList.remove("show");
+
+}
+
+/* ================= 
+    HELP POPUP 
+  ================= */
+function openHelpPopup(){
+
+closeMenu();
+
+document.getElementById("helpPopup")
+.style.display = "flex";
+
+}
+
+function closeHelpPopup(){
+
+document.getElementById("helpPopup")
+.style.display = "none";
+
+}
+
+function openInstagram(){
+
+window.open(
+"https://instagram.com/a1mobile.official",
+"_blank"
+);
+
+}
+
+function openWhatsapp(){
+
+window.open(
+"https://wa.me/917898957751",
+"_blank"
+);
+
+}
+
+/* =================
+   FOLLOW POPUP
+ ================= */
+function openFollowPopup(){
+
+closeMenu();
+
+document.getElementById("followPopup")
+.style.display = "flex";
+
+}
+
+function closeFollowPopup(){
+
+document.getElementById("followPopup")
+.style.display = "none";
+
+}
+
+function openWebsite(){
+
+window.open(
+"https://a1mobile.shop",
+"_blank"
+);
+
+}
+
+function openWhatsappChannel(){
+
+window.open(
+"https://whatsapp.com/channel/",
+"_blank"
+);
+
+}
+
+function openYoutube(){
+
+window.open(
+"https://youtube.com/",
+"_blank"
+);
+
+}
+/* ================= SPLASH SCREEN ================= */
+
+window.onload = function(){
+
+setTimeout(()=>{
+
+document.getElementById("splashScreen").style.display = "none";
+
+document.getElementById("introScreen").style.display = "block";
+
+},2500);
+
+}
+
+/* ================= INTRO SCREEN ================= */
+
+let introIndex = 0;
+
+let introSlides = document.querySelectorAll(".intro-slide");
+
+function nextIntro(){
+
+introSlides[introIndex].classList.remove("active");
+
+introIndex++;
+
+if(introIndex >= introSlides.length){
+
+closeIntro();
+
+return;
+
+}
+
+introSlides[introIndex].classList.add("active");
+
+}
+
+function closeIntro(){
+
+document.getElementById("introScreen").style.display = "none";
+
+document.getElementById("loginPage")
+.classList.remove("hidden");
+
+localStorage.setItem("introSeen","yes");
+
+}
+
+/* ================= SPLASH + INTRO ================= */
+
+window.onload = function(){
+
+setTimeout(()=>{
+
+document.getElementById("splashScreen").style.display = "none";
+
+if(localStorage.getItem("introSeen") != "yes"){
+
+document.getElementById("introScreen").style.display = "block";
+
+}else{
+
+document.getElementById("loginPage")
+.classList.remove("hidden");
+
+}
+
+},2500);
+
+}
+
+</script>
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+
+import {
+getFirestore,
+doc,
+getDoc,
+getDocs,
+collection,
+setDoc,
+updateDoc
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB1HR0-Oqk3OyKzPBmm6h541OrMRG0n1lA",
+  authDomain: "a1-mobile-referral-system.firebaseapp.com",
+  projectId: "a1-mobile-referral-system",
+  storageBucket: "a1-mobile-referral-system.firebasestorage.app",
+  messagingSenderId: "855895083807",
+  appId: "1:855895083807:web:671d7caa27a126b43d3e2a",
+  measurementId: "G-9HTG468C9X"
+};
+
+const app = initializeApp(firebaseConfig);
+alert("Firebase Loaded");
+const db = getFirestore(app);
+
+window.db = db;
+alert("db = " + typeof db);
+alert("doc = " + typeof doc);
+alert("setDoc = " + typeof setDoc);
+window.doc = doc;
+console.log(doc);
+window.doc = doc;
+window.getDoc = getDoc;
+window.setDoc = setDoc;
+window.updateDoc = updateDoc;
+window.getDocs = getDocs;
+window.collection = collection;
+
+
+console.log("Firebase Connected");
+function openRegister(){
+
+document.getElementById("loginPage")
+.classList.add("hidden");
+
+document.getElementById("registerPage")
+.classList.remove("hidden");
+
+}
+function openWithdraw(){
+alert("Withdraw Open");
+document.getElementById("profilePage")
+.classList.add("hidden");
+
+document.getElementById("withdrawPage")
+.classList.remove("hidden");
+
+}
+function showProfile(){
+
+document.getElementById("withdrawPage")
+.classList.add("hidden");
+
+document.getElementById("profilePage")
+.classList.remove("hidden");
+
+}
+
+function backLogin(){
+
+document.getElementById("registerPage")
+.classList.add("hidden");
+
+document.getElementById("loginPage")
+.classList.remove("hidden");
+
+}
+async function registerUser(){
+let name =
+document.getElementById("regName").value;
+
+let mobile =
+document.getElementById("regMobile").value;
+
+const existingUser = await getDoc(
+  doc(window.db, "users", mobile)
+);
+
+if (existingUser.exists()) {
+  alert("Mobile Number Already Registered");
+  return;
+}
+
+let pin =
+document.getElementById("regPin").value;
+
+let referralCode =
+document.getElementById("referralCode").value
+.trim()
+.toUpperCase();
+
+if(name=="" || mobile=="" || pin==""){
+
+alert("Please Fill All Fields");
+
+return;
+
+}
+
+try{
+  let refCode =
+name.substring(0,3).toUpperCase() +
+mobile.slice(-3);
+
+await window.setDoc(
+window.doc(window.db,"users",mobile),
+{
+  
+name:name,
+mobile:mobile,
+pin:pin,
+upi:"",
+referredBy: referralCode || "",
+refCode: refCode,
+refBy: "",
+points:0,
+totalLeads:0,
+referralUnlocked:false,
+joined:new Date().toLocaleDateString()
+}
+);
+
+if(referralCode){
+
+const usersSnap = await getDocs(
+collection(window.db,"users")
+);
+
+usersSnap.forEach(async (userDoc)=>{
+
+let data = userDoc.data();
+
+if(data.refCode === referralCode){
+
+await updateDoc(
+doc(window.db,"users",userDoc.id),
+{
+totalLeads: Number(data.totalLeads || 0) + 1,
+points: Number(data.points || 0) + 1000
+}
+);
+
+}
+
+});
+
+}
+
+alert("Account Created Successfully");
+
+backLogin();
+
+}
+catch(error){
+
+alert("Register Error = " + error.message);
+
+}
+
+}
+window.openRegister = openRegister;
+window.backLogin = backLogin;
+window.registerUser = registerUser;
+alert("Reached Here");
+window.copyRefCode = copyRefCode;
+window.openWithdraw = openWithdraw;
+window.showProfile = showProfile;
+window.withdrawRequest = withdrawRequest;
+
+function copyRefCode(){
+
+let code =
+document.getElementById("profileRefCode")
+.innerText;
+
+navigator.clipboard.writeText(code)
+.then(()=>{
+alert("✅ Referral Code Copied");
+})
+.catch(()=>{
+prompt("Copy Referral Code", code);
+});
+
+}
+
+async function withdrawRequest(){
+
+let points =
+Number(document.getElementById(
+"withdrawPoints").value);
+
+if(points < 1000){
+
+alert("Minimum 1000 Points Required");
+
+return;
+
+}
+
+if(points < 1000){
+alert("Minimum 1000 Points Required");
+return;
+}
+
+// 👇 यहीं Paste करो
+
+let pendingCheck = await getDocs(
+collection(window.db,"withdrawRequests")
+);
+
+let alreadyPending = false;
+
+pendingCheck.forEach((doc)=>{
+let data = doc.data();
+
+if(
+data.userId === user.mobile &&
+data.status === "pending"
+){
+alreadyPending = true;
+}
+});
+
+if(alreadyPending){
+alert("Your withdrawal request is already pending");
+return;
+}
+
+alert("Saving Withdrawal...");
+
+await window.setDoc(
+window.doc(
+window.db,
+"withdrawRequests",
+Date.now().toString()
+),
+{
+userId:user.mobile,
+name:user.name,
+mobile:user.mobile,
+points:points,
+upi:user.upi || "",
+status:"pending",
+date:new Date().toLocaleDateString()
+}
+);
+
+alert("Withdrawal Saved Successfully");
+
+await window.updateDoc(
+  window.doc(window.db, "users", user.mobile),
+  {
+    points: Number(user.points || 0) - points
+  }
+);
+
+alert("Withdrawal Request Submitted");
+
+}
+
+let currentFilter = "pending";
+
+window.openWithdrawAdmin = async function(){
+ 
+ alert("Button Clicked");
+  
+  document.getElementById("adminPage")
+.classList.add("hidden");
+
+document.getElementById("withdrawAdminPage")
+.classList.remove("hidden");
+
+let snap = await getDocs(
+collection(window.db,"withdrawRequests")
+);
+
+let html = "";
+
+snap.forEach((doc)=>{
+  let data = doc.data();
+
+if(data.status !== currentFilter){
+return;
+}
+
+let requestId = doc.id;
+
+html += `
+<div>
+<b>${data.name}</b><br>
+${data.mobile}<br>
+${data.points} Points<br>
+${data.status}<br><br>
+
+<button onclick="approveWithdraw('${requestId}')">
+✅ Approve
+</button>
+
+<button onclick="rejectWithdraw('${requestId}')">
+❌ Reject
+</button>
+
+<hr>
+</div>
+`;
+
+});
+
+document.getElementById("withdrawList").innerHTML = html;
+
+
+window.approveWithdraw = async function(id){
+  
+  let reqDoc = await getDoc(
+doc(window.db,"withdrawRequests",id)
+);
+
+let reqData = reqDoc.data();
+
+alert(JSON.stringify(reqData));
+
+await updateDoc(
+doc(window.db,"withdrawRequests",id),
+{
+status:"approved"
+}
+);
+
+}
+
+let reqDoc = await getDoc(
+doc(window.db,"withdrawRequests",id)
+);
+
+let reqData = reqDoc.data();
+
+window.rejectWithdraw = async function(id){
+
+let reqDoc = await getDoc(
+doc(window.db,"withdrawRequests",id)
+);
+
+let reqData = reqDoc.data();
+
+await updateDoc(
+doc(window.db,"users",reqData.userId),
+{
+points: Number(userData.points || 0) + Number(reqData.points || 0)
+}
+);
+
+await updateDoc(
+doc(window.db,"withdrawRequests",id),
+{
+status:"rejected"
+}
+);
+
+}
+}
+
+window.filterWithdraw = function(status){
+
+currentFilter = status;
+
+openWithdrawAdmin();
+
+}
+
+window.loadWithdrawalHistory = async function() {
+alert("User Mobile = " + user.mobile);
+alert("Function Started");
+alert("History Function Running");
+
+  let historyDiv =
+  document.getElementById("historyList");
+
+  let snapshot = await getDocs(
+    collection(window.db, "withdrawRequests")
+  );
+alert("Docs Found = " + snapshot.size);
+  let html = "";
+
+  snapshot.forEach((docSnap) => {
+
+    let data = docSnap.data();
+    if(
+    String(data.userId) === String(user.mobile) ||
+    String(data.mobile) === String(user.mobile)
+){
+
+      html += `
+      <div class="card">
+        <p>Points: ${data.points}</p>
+        <p>Status: ${data.status}</p>
+        <p>Date: ${data.date}</p>
+      </div>
+      `;
+    }
+historyDiv.innerHTML = html;
+  });
+
+  historyDiv.innerHTML = html;
+}
+
+function openHistoryPage(){
+
+document.getElementById("profilePage")
+.classList.add("hidden");
+
+document.getElementById("historyPage")
+.classList.remove("hidden");
+
+loadWithdrawalHistory();
+
+}
+
+function backProfile(){
+
+document.getElementById("historyPage")
+.classList.add("hidden");
+
+document.getElementById("profilePage")
+.classList.remove("hidden");
+
+}
+window.openHistoryPage = openHistoryPage;
+window.backProfile = backProfile;
+
+</script>
+<script src="https://verify.msg91.com/otp-provider.js"></script>
+</body>
+
+</html>
