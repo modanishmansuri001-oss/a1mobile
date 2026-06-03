@@ -1147,64 +1147,22 @@ style="margin-top:15px;">
 <div id="teamPage" class="hidden">
 
 <h2>👥 Team Members</h2>
+
 <div id="teamList"></div>
 
-async function openLeadDetails(){
-
-document.getElementById("adminPage")
-.classList.add("hidden");
-
-document.getElementById("leadDetailsPage")
-.classList.remove("hidden");
-
-let snap = await window.getDocs(
-window.collection(window.db,"verifiedNumbers")
-);
-
-let html = "";
-
-snap.forEach((doc)=>{
-
-let data = doc.data();
-
-html += `
-<div style="
-padding:10px;
-margin:5px;
-border:1px solid #ddd;
-border-radius:10px;
-">
-
-📱 ${data.mobile}<br>
-
-👤 ${data.addedByName || "Old Lead"}<br>
-
-📅 ${data.date || ""}
+<button onclick="backToAdmin()">
+← Back
+</button>
 
 </div>
-`;
 
-});
+<div id="leadDetailsPage" class="hidden">
 
-document.getElementById("leadDetailsList").innerHTML = html;
+<h2>📱 Lead Details</h2>
 
-}
+<div id="leadDetailsList"></div>
 
-function backAdminFromLead(){
-
-document.getElementById("leadDetailsPage")
-.classList.add("hidden");
-
-document.getElementById("adminPage")
-.classList.remove("hidden");
-
-}
-
-window.openLeadDetails = openLeadDetails;
-window.backAdminFromLead = backAdminFromLead;
-
-
-<button onclick="backToAdmin()">
+<button onclick="backAdminFromLead()">
 ← Back
 </button>
 
@@ -1266,7 +1224,6 @@ let timerInterval;
 ================= */
 function openEarn(){
 
-alert(typeof window.initSendOTP);
 let number = prompt("📱 Enter Customer Number");
 
 if(!number) return;
@@ -1323,7 +1280,6 @@ console.log(error);
 
 }
 };
-alert(typeof window.initSendOTP);
 window.initSendOTP(configuration);
 
 }
@@ -1439,7 +1395,6 @@ updatePoints();
 
 } catch(error) {
 
-   alert("ERROR = " + error.message);
 
 }
 }
@@ -1675,19 +1630,7 @@ document.getElementById("profilePage")
 loadProfile();
 
 }
-function openAdminPanel(){
 
-closeMenu();
-
-// dashboard hide
-document.getElementById("dashboard")
-.classList.add("hidden");
-
-// admin panel show
-document.getElementById("adminPage")
-.classList.remove("hidden");
-
-}
 
 function backAdmin(){
 
@@ -1707,7 +1650,7 @@ document.getElementById("profilePage")
 document.getElementById("dashboard")
 .classList.remove("hidden");
 
-}
+}content://com.android.externalstorage.documents/tree/primary%3ACODING%20REFER%20AND%20EARN::primary:CODING REFER AND EARN/index-backup.html
 
 function openAdminLogin(){
 
@@ -1809,6 +1752,9 @@ border-radius:10px;
 
 👥 Referrals:
 ${data.totalReferrals || 0}<br>
+<br>
+📢 Referral Code:
+${data.refCode || "N/A"}
 
 🔥 Leads:
 ${data.totalLeads || 0}<br>
@@ -2008,7 +1954,7 @@ document.getElementById("loginPage")
 </script>
 
 <script type="module">
-  alert("Firebase Loaded");
+
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 
@@ -2033,14 +1979,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-alert("Firebase Loaded");
 const db = getFirestore(app);
-alert("Firestore Loaded");
 
 window.db = db;
-alert("db = " + typeof db);
-alert("doc = " + typeof doc);
-alert("setDoc = " + typeof setDoc);
 window.doc = doc;
 console.log(doc);
 window.doc = doc;
@@ -2061,7 +2002,6 @@ document.getElementById("registerPage")
 
 }
 function openWithdraw(){
-alert("Withdraw Open");
 document.getElementById("profilePage")
 .classList.add("hidden");
 
@@ -2158,7 +2098,7 @@ if(data.refCode === referralCode){
 await updateDoc(
 doc(window.db,"users",userDoc.id),
 {
-totalLeads: Number(data.totalLeads || 0) + 1,
+totalReferrals: Number(data.totalReferrals || 0) + 1,
 points: Number(data.points || 0) + 1000
 }
 );
@@ -2175,16 +2115,14 @@ backLogin();
 
 }
 catch(error){
-
-alert("Register Error = " + error.message);
-
+console.log(error);
+alert(error.message);
 }
 
 }
 window.openRegister = openRegister;
 window.backLogin = backLogin;
 window.registerUser = registerUser;
-alert("Reached Here");
 window.copyRefCode = copyRefCode;
 window.openWithdraw = openWithdraw;
 window.showProfile = showProfile;
@@ -2249,7 +2187,6 @@ alert("Your withdrawal request is already pending");
 return;
 }
 
-alert("Saving Withdrawal...");
 
 await window.setDoc(
 window.doc(
@@ -2285,7 +2222,6 @@ let currentFilter = "pending";
 
 window.openWithdrawAdmin = async function(){
  
- alert("Button Clicked");
   
   document.getElementById("adminPage")
 .classList.add("hidden");
@@ -2340,7 +2276,6 @@ doc(window.db,"withdrawRequests",id)
 
 let reqData = reqDoc.data();
 
-alert(JSON.stringify(reqData));
 
 await updateDoc(
 doc(window.db,"withdrawRequests",id),
@@ -2364,6 +2299,12 @@ doc(window.db,"withdrawRequests",id)
 );
 
 let reqData = reqDoc.data();
+
+let userDoc = await getDoc(
+doc(window.db,"users",reqData.userId)
+);
+
+let userData = userDoc.data();
 
 await updateDoc(
 doc(window.db,"users",reqData.userId),
@@ -2391,9 +2332,6 @@ openWithdrawAdmin();
 }
 
 window.loadWithdrawalHistory = async function() {
-alert("User Mobile = " + user.mobile);
-alert("Function Started");
-alert("History Function Running");
 
   let historyDiv =
   document.getElementById("historyList");
@@ -2401,7 +2339,6 @@ alert("History Function Running");
   let snapshot = await getDocs(
     collection(window.db, "withdrawRequests")
   );
-alert("Docs Found = " + snapshot.size);
   let html = "";
 
   snapshot.forEach((docSnap) => {
@@ -2473,6 +2410,61 @@ document.getElementById("adminPage")
 }
 window.openTeamPage = openTeamPage;
 window.backToAdmin = backToAdmin;
+
+async function openLeadDetails(){
+
+document.getElementById("adminPage")
+.classList.add("hidden");
+
+document.getElementById("leadDetailsPage")
+.classList.remove("hidden");
+
+let snap = await window.getDocs(
+window.collection(window.db,"verifiedNumbers")
+);
+
+let html = "";
+
+snap.forEach((doc)=>{
+
+let data = doc.data();
+
+html += `
+<div style="
+padding:10px;
+margin:5px;
+border:1px solid #ddd;
+border-radius:10px;
+">
+
+📱 ${data.mobile}<br>
+👤 ${data.addedByName || "Old Lead"}<br>
+📅 ${new Date(data.date).toLocaleString()}
+
+</div>
+`;
+
+});
+
+document.getElementById("leadDetailsList").innerHTML = html;
+
+}
+
+function backAdminFromLead(){
+
+document.getElementById("leadDetailsPage")
+.classList.add("hidden");
+
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+}
+
+window.openLeadDetails = openLeadDetails;
+window.backAdminFromLead = backAdminFromLead;
+
+
+
 </script>
 <script src="https://verify.msg91.com/otp-provider.js"></script>
 </body>
