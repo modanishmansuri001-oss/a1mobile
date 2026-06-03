@@ -72,8 +72,7 @@ left:0;
       font-family: Arial;
       background:#f2f2f2;
       margin:0;
-      padding:0;
-      padding-top:40px;
+      padding:0; 
     }
 /* ================= 
       CONTAINER 
@@ -94,7 +93,7 @@ width:100%;
 max-width:100%;
 box-sizing:border-box;
 
-margin-top:80px;
+margin-top:20px;
 
 background:rgba(255,255,255,0.15);
 
@@ -753,7 +752,9 @@ display:none;
 }
 
 .announcement-bar{
-  background:#25D366;
+  background:#25D366 !important;
+  height:40px;
+  line-height:40px;
   padding:10px;
   overflow:hidden;
   width:100%;
@@ -767,6 +768,8 @@ display:none;
   font-weight:bold;
   text-decoration:none;
   animation:scrollText 15s linear infinite;
+  font-size:16px;
+  font-weight:bold;
   }
 
   @keyframes scrollText{
