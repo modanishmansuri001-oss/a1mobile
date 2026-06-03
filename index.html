@@ -747,6 +747,35 @@ display:none;
                                                       }
 }
 
+.announcement-bar{
+width:100%;
+background:#25D366;
+color:white;
+padding:10px 0;
+overflow:hidden;
+white-space:nowrap;
+position:fixed;
+top:0;
+left:0;
+z-index:99999;
+font-weight:bold;
+}
+
+.announcement-bar a{
+color:white;
+text-decoration:none;
+display:inline-block;
+animation:scrollText 15s linear infinite;
+}
+
+@keyframes scrollText{
+0%{
+transform:translateX(100%);
+}
+100%{
+transform:translateX(-100%);
+}
+}
 
   </style>
 
@@ -809,6 +838,12 @@ display:none;
 
 </div>
 
+</div>
+
+<div class="announcement-bar">
+<a href="https://chat.whatsapp.com/HZ12IJErDh7Fi1RWvP54Bb?s=cl&p=a&ilr=1" target="_blank">
+📢 Join Official A1 Mobile WhatsApp Group 🚀 | Latest Updates • Support • New Features 🎉 | Click Here 👆
+</a>
 </div>
 
 <!-- TOP BAR -->
