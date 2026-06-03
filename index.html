@@ -565,11 +565,14 @@ transition:0.5s;
 }
 
 #splashScreen img{
-width:140px;
-height:140px;
-object-fit:cover;
-border-radius:30px;
-animation:zoomLogo 1.5s infinite alternate;}
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:30px;
+  animation:zoomLogo 1.5s infinite alternate;
+  box-shadow:0 0 30px rgba(255,255,255,0.5);
+  }
+}
 
 @keyframes zoomLogo{
 from{
@@ -590,6 +593,27 @@ margin-top:10px;
 font-size:18px;
 opacity:0.9;
 }
+
+.loader{
+  width:50px;
+  height:50px;
+  border:5px solid rgba(255,255,255,0.3);
+  border-top:5px solid white;
+  border-radius:50%;
+  margin-top:20px;
+  animation:spin 1s linear infinite;
+  }
+
+  @keyframes spin{
+  0%{
+  transform:rotate(0deg);
+  }
+  100%{
+  transform:rotate(360deg);
+  }
+  }
+}
+
 /* ================= INTRO SCREEN ================= */
 
 .intro-slide{
@@ -731,15 +755,17 @@ display:none;
 <body>
   <!-- ================= SPLASH SCREEN ================= -->
 
-<div id="splashScreen">
+  <div id="splashScreen">
+        <img src="https://i.ibb.co/ks6dTrSr/file-0000000049f87207bbe4d99c33a4a8d1.png">
 
-<img src="https://i.ibb.co/ks6dTrSr/file-0000000049f87207bbe4d99c33a4a8d1.png">
+            <h1>A1 Mobile</h1>
 
-<h1>A1 Mobile</h1>
+                <h3>Referral System</h3>
 
-<p>Loading...</p>
+                    <p>🚀 Earn • Refer • Grow</p>
 
-</div>
+                        <div class="loader"></div>
+                        </div>
 
 <!-- ================= INTRO SCREEN ================= -->
 
