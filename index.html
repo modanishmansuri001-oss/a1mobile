@@ -648,6 +648,23 @@ gap:15px;
 #introScreen{
 display:none;
 }
+
+.logo-animation{
+      animation: floatLogo 2s ease-in-out infinite;
+      }
+
+      @keyframes floatLogo{
+          0%{
+                  transform: translateY(0px);
+                      }
+                          50%{
+                                  transform: translateY(-10px);
+                                      }
+                                          100%{
+                                                  transform: translateY(0px);
+                                                      }
+                                                      }
+}
   </style>
 
 </head>
@@ -756,6 +773,7 @@ display:none;
 <div class="container hidden" id="loginPage">
 
  <img 
+ class="logo-animation"
 src="https://i.ibb.co/ks6dTrSr/file-0000000049f87207bbe4d99c33a4a8d1.png"
 style="
 width:110px;
