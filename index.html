@@ -1226,6 +1226,9 @@ let timerInterval;
 function openEarn(){
 
 let number = prompt("📱 Enter Customer Number");
+if(number.startsWith("+91")){
+      number = number.replace("+91","");
+
 
 if(!number) return;
 
