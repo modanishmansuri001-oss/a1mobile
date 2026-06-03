@@ -73,6 +73,7 @@ left:0;
       background:#f2f2f2;
       margin:0;
       padding:0;
+      padding-top:40px;
     }
 /* ================= 
       CONTAINER 
@@ -753,31 +754,30 @@ display:none;
 
 .announcement-bar{
   background:#25D366;
-  color:white;
   padding:10px;
-  text-align:center;
-  font-size:14px;
-  font-weight:bold;
   overflow:hidden;
+  width:100%;
+  box-sizing:border-box;
+  }
+
+  .announcement-bar a{
+  display:block;
+  white-space:nowrap;
+  color:white;
+  font-weight:bold;
+  text-decoration:none;
+  animation:scrollText 15s linear infinite;
+  }
+
+  @keyframes scrollText{
+  0%{
+  transform:translateX(100%);
+  }
+  100%{
+  transform:translateX(-100%);
+  }
   }
 }
-
-.announcement-bar a{
-color:white;
-text-decoration:none;
-display:inline-block;
-animation:scrollText 15s linear infinite;
-}
-
-@keyframes scrollText{
-0%{
-transform:translateX(100%);
-}
-100%{
-transform:translateX(-100%);
-}
-}
-
   </style>
 
 </head>
