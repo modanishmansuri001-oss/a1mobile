@@ -733,7 +733,11 @@ transform:translateY(0px);
   position:fixed;
   top:0;
   left:0;
-  z-index:99999;
+  position:relative;   /* fixed हटाओ */
+  margin-bottom:10px;  /* नीचे gap */
+  z-index:1;
+border-radius:0 0 10px 10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.2);
 }
 
 .announcement-bar a{
