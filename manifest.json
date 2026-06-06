@@ -1,0 +1,13 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "A1 Mobile",
+  "orientation": "portrait",
+  "scope": "https://a1mobile.in/",
+  "short_name": "A1 Mobile",
+  "start_url": "https://a1mobile.in/",
+  "theme_color": "#1976d2",
+  "description": "A1 Mobile Referral System - Earn reward points by referring customers and manage withdrawals easily.",
+  "lang": "en"
+}
