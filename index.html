@@ -2291,8 +2291,12 @@ return;
 
 }
 
-if(points < 1000){
-alert("Minimum 1000 Points Required");
+let user = JSON.parse(
+localStorage.getItem("currentUser")
+);
+
+if(points > Number(user.points || 0)){
+alert("Insufficient Points");
 return;
 }
 
