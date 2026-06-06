@@ -2294,7 +2294,9 @@ return;
 let user = JSON.parse(
 localStorage.getItem("currentUser")
 );
-
+     
+alert(JSON.stringify(user));
+     
 if(points > Number(user.points || 0)){
 alert("Insufficient Points");
 return;
