@@ -1500,6 +1500,11 @@ user.points;
 
    if(pin == user.pin){
 
+        localStorage.setItem(
+"currentUser",
+JSON.stringify(user)
+);
+
       document.getElementById("loginPage")
 .classList.add("hidden");
 
