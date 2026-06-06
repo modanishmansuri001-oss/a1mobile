@@ -2411,31 +2411,6 @@ ${data.status}<br><br>
 
 document.getElementById("withdrawList").innerHTML = html;
 
-
-window.approveWithdraw = async function(id){
-  
-  let reqDoc = await getDoc(
-doc(window.db,"withdrawRequests",id)
-);
-
-let reqData = reqDoc.data();
-
-
-await updateDoc(
-doc(window.db,"withdrawRequests",id),
-{
-status:"approved"
-}
-);
-
-}
-
-let reqDoc = await getDoc(
-doc(window.db,"withdrawRequests",id)
-);
-
-let reqData = reqDoc.data();
-
 window.rejectWithdraw = async function(id){
 
 let reqDoc = await getDoc(
@@ -2464,8 +2439,13 @@ status:"rejected"
 }
 );
 
+alert("Request Rejected");
+
+openWithdrawAdmin();
+
 }
-}
+     alert("Request Approved");
+openWithdrawAdmin();
 
 window.filterWithdraw = function(status){
 
