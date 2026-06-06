@@ -2411,6 +2411,8 @@ ${data.status}<br><br>
 
 document.getElementById("withdrawList").innerHTML = html;
 
+}
+
 window.rejectWithdraw = async function(id){
 
 let reqDoc = await getDoc(
@@ -2444,8 +2446,6 @@ alert("Request Rejected");
 openWithdrawAdmin();
 
 }
-     alert("Request Approved");
-openWithdrawAdmin();
 
 window.filterWithdraw = function(status){
 
