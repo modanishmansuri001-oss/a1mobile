@@ -2300,8 +2300,6 @@ let user = JSON.parse(
 localStorage.getItem("currentUser")
 );
      
-alert(JSON.stringify(user));
-     
 if(points > Number(user.points || 0)){
 alert("Insufficient Points");
 return;
@@ -2357,6 +2355,10 @@ await window.updateDoc(
     points: Number(user.points || 0) - points
   }
 );
+
+
+user.points = Number(user.points || 0) - points;
+localStorage.setItem("currentUser", JSON.stringify(user));
 
 alert("Withdrawal Request Submitted");
 
