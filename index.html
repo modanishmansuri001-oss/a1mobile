@@ -2456,9 +2456,6 @@ status:"approved"
 }
 );
 
-openWithdrawAdmin();
-}
-
 alert("Request Approved");
 
 openWithdrawAdmin();
@@ -2482,6 +2479,11 @@ let userData = userDoc.data();
 
      if(reqData.status === "rejected"){
 alert("Already Rejected");
+return;
+     }
+
+     if(reqData.status === "approved"){
+alert("Already Approved");
 return;
      }
 
