@@ -2413,6 +2413,22 @@ document.getElementById("withdrawList").innerHTML = html;
 
 }
 
+
+window.approveWithdraw = async function(id){
+
+await updateDoc(
+doc(window.db,"withdrawRequests",id),
+{
+status:"approved"
+}
+);
+
+alert("Request Approved");
+
+openWithdrawAdmin();
+
+}
+
 window.rejectWithdraw = async function(id){
 
 let reqDoc = await getDoc(
