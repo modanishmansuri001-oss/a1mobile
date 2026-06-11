@@ -2416,6 +2416,25 @@ document.getElementById("withdrawList").innerHTML = html;
 
 window.approveWithdraw = async function(id){
 
+let reqDoc = await getDoc(
+doc(window.db,"withdrawRequests",id)
+);
+
+let reqData = reqDoc.data();
+
+let userDoc = await getDoc(
+doc(window.db,"users",reqData.userId)
+);
+
+let userData = userDoc.data();
+
+await updateDoc(
+doc(window.db,"users",reqData.userId),
+{
+points: Number(userData.points || 0) - Number(reqData.points || 0)
+}
+);
+
 await updateDoc(
 doc(window.db,"withdrawRequests",id),
 {
@@ -2428,6 +2447,7 @@ alert("Request Approved");
 openWithdrawAdmin();
 
 }
+
 
 window.rejectWithdraw = async function(id){
 
