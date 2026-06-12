@@ -1145,6 +1145,24 @@ Back
 </button>
 </div>
 
+ <h3>🔍 Search User</h3>
+
+<input
+id="searchUser"
+type="text"
+placeholder="Enter Name or Mobile Number"
+onkeyup="searchUsers()"
+style="
+width:100%;
+padding:12px;
+margin-bottom:10px;
+border:1px solid #ddd;
+border-radius:10px;
+box-sizing:border-box;
+">
+
+<div id="searchResults"></div>    
+
 <button onclick="openLeadDetails()">
 📱 Lead Details
 </button>
@@ -2644,6 +2662,79 @@ window.backToAdmin = backToAdmin;
      
 window.openTeamPage = openTeamPage;
 window.backToAdmin = backToAdmin;
+
+async function searchUsers(){
+
+let search = document.getElementById("searchUser")
+.value.toLowerCase();
+
+let snap = await window.getDocs(
+window.collection(window.db,"users")
+);
+
+let html = "";
+
+snap.forEach(doc=>{
+
+let data = doc.data();
+
+if(
+(data.name || "").toLowerCase().includes(search) ||
+(data.mobile || "").toLowerCase().includes(search)
+){
+
+html += `
+<div style="
+padding:10px;
+margin:8px 0;
+border:1px solid #ddd;
+border-radius:10px;
+background:#fff;
+">
+
+<b>👤 ${data.name}</b><br>
+📱 ${data.mobile}<br>
+💰 Points: ${data.points || 0}<br>
+📈 Leads: ${data.totalLeads || 0}<br><br>
+
+<button onclick="addPoints('${doc.id}')">
+➕ Add Points
+</button>
+
+</div>
+`;
+
+}
+
+});
+
+document.getElementById("searchResults").innerHTML = html;
+
+}
+
+async function addPoints(userId){
+
+let points = prompt("Kitne Points Add Karne Hai?");
+
+if(!points) return;
+
+await window.updateDoc(
+window.doc(window.db,"users",userId),
+{
+points: window.increment(Number(points))
+}
+);
+
+alert("Points Added Successfully");
+
+searchUsers();
+
+}
+
+
+window.searchUsers = searchUsers;
+window.addPoints = addPoints;     
+     
 
 async function openLeadDetails(){
 
