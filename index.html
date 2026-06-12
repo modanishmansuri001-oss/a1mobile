@@ -2581,15 +2581,19 @@ loadTeamList();
 
 function backToAdmin(){
 
- document.getElementById("teamPage")
- .classList.add("hidden");
+alert("Back Clicked");
 
- document.getElementById("withdrawAdminPage")
- .classList.add("hidden");
+document.getElementById("withdrawAdminPage")
+.style.display = "none";
 
- document.getElementById("adminPage")
- .classList.remove("hidden");
+document.getElementById("teamPage")
+.style.display = "none";
+
+document.getElementById("adminPage")
+.style.display = "block";
+
 }
+window.backToAdmin = backToAdmin;
      
 window.openTeamPage = openTeamPage;
 window.backToAdmin = backToAdmin;
