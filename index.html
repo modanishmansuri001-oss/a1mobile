@@ -2723,7 +2723,7 @@ alert("Update Start");
 await window.updateDoc(
 window.doc(window.db,"users",userId),
 {
-points: window.increment(Number(points))
+points: Number(points)
 }
 );
 
