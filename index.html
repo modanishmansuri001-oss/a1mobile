@@ -2717,7 +2717,9 @@ async function addPoints(userId){
 let points = prompt("Kitne Points Add Karne Hai?");
 
 if(!points) return;
-
+     
+alert("Update Start");
+     
 await window.updateDoc(
 window.doc(window.db,"users",userId),
 {
@@ -2725,6 +2727,8 @@ points: window.increment(Number(points))
 }
 );
 
+alert("Update Done");
+     
 alert("Points Added Successfully");
 
 searchUsers();
