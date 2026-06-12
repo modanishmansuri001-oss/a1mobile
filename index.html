@@ -2582,15 +2582,19 @@ function backToAdmin(){
 alert("Back Clicked");
 
 document.getElementById("withdrawAdminPage")
-.style.display = "none";
+.classList.add("hidden");
 
 document.getElementById("teamPage")
-.style.display = "none";
+.classList.add("hidden");
+
+document.getElementById("leadDetailsPage")
+.classList.add("hidden");
 
 document.getElementById("adminPage")
-.style.display = "block";
+.classList.remove("hidden");
 
 }
+     
 window.backToAdmin = backToAdmin;
      
 window.openTeamPage = openTeamPage;
