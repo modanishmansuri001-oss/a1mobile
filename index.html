@@ -2189,7 +2189,9 @@ getDocs,
 collection,
 setDoc,
 updateDoc
-} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+addDoc
+} 
+from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1HR0-Oqk3OyKzPBmm6h541OrMRG0n1lA",
@@ -2213,7 +2215,7 @@ window.setDoc = setDoc;
 window.updateDoc = updateDoc;
 window.getDocs = getDocs;
 window.collection = collection;
-
+window.addDoc = addDoc;
 console.log("Firebase Connected");
 function openRegister(){
 
@@ -2835,6 +2837,8 @@ points: newPoints
 }
 );
 
+
+ try{    
 await window.addDoc(
 window.collection(window.db,"pointsHistory"),
 {
