@@ -773,12 +773,18 @@ margin:15px 0;
 }
 
 .admin-card{
-background:#fff;
-padding:15px;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
+background:linear-gradient(135deg,#ffffff,#f8f9fa);
+padding:18px;
+border-radius:16px;
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
 text-align:center;
+transition:0.3s;
+border:1px solid #f0f0f0;
 }
+
+ .admin-card:hover{
+transform:translateY(-3px);
+       }
 
 .admin-card h3{
 margin:0;
@@ -2697,17 +2703,46 @@ background:#fff;
 💰 Points: ${data.points || 0}<br>
 📈 Leads: ${data.totalLeads || 0}<br><br>
 
-<button onclick="addPoints('${doc.id}')">
-➕ Add Points
+<div style="
+display:flex;
+gap:8px;
+margin-top:10px;
+">
+
+<button onclick="addPoints('${doc.id}')" style="
+flex:1;
+background:#28a745;
+color:white;
+border:none;
+padding:10px;
+border-radius:8px;
+">
+➕ Add
 </button>
 
-<button onclick="removePoints('${doc.id}')">
-➖ Remove Points
+<button onclick="removePoints('${doc.id}')" style="
+flex:1;
+background:#dc3545;
+color:white;
+border:none;
+padding:10px;
+border-radius:8px;
+">
+➖ Remove
 </button>
 
-<button onclick="viewUser('${doc.id}')">
-👁 View Details
+<button onclick="viewUser('${doc.id}')" style="
+flex:1;
+background:#007bff;
+color:white;
+border:none;
+padding:10px;
+border-radius:8px;
+">
+👁 Details
 </button>
+
+</div>
 
 </div>
 `;
