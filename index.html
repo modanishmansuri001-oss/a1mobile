@@ -2873,6 +2873,73 @@ alert(
 
 window.viewUser = viewUser;
 
+
+     async function openHistoryPage(){
+
+document.getElementById("adminPage")
+.classList.add("hidden");
+
+document.getElementById("historyPage")
+.classList.remove("hidden");
+
+let snap = await window.getDocs(
+window.collection(window.db,"pointsHistory")
+);
+
+let html = "";
+
+snap.forEach(doc=>{
+
+let data = doc.data();
+
+html += `
+<div style="
+padding:10px;
+margin:8px 0;
+border:1px solid #ddd;
+border-radius:10px;
+background:#fff;
+">
+
+👤 User ID: ${data.userId}<br>
+💰 Points: ${data.points}<br>
+📌 Action: ${data.action}<br>
+📅 ${new Date(data.date).toLocaleString()}
+
+</div>
+`;
+});
+
+document.getElementById("historyList").innerHTML = html;
+
+}
+
+function backHistory(){
+
+document.getElementById("historyPage")
+.classList.add("hidden");
+
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+}
+
+window.backHistory = backHistory;
+
+     
+function backHistory(){
+
+document.getElementById("historyPage")
+.classList.add("hidden");
+
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+}
+
+window.openHistoryPage = openHistoryPage;
+window.backHistory = backHistory;
+
      
 async function openLeadDetails(){
 
