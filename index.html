@@ -1167,7 +1167,11 @@ border-radius:10px;
 box-sizing:border-box;
 ">
 
-<div id="searchResults"></div>    
+<div id="searchResults"></div>
+
+     <button onclick="openHistoryPage()">
+📜 Points History
+     </button>
 
 <button onclick="openLeadDetails()">
 📱 Lead Details
@@ -1181,6 +1185,19 @@ box-sizing:border-box;
 
 </div>
 
+
+<div id="historyPage" class="hidden">
+
+<h3>📜 Points History</h3>
+
+<div id="historyList"></div>
+
+<button onclick="backHistory()">
+⬅ Back
+</button>
+
+</div>
+     
 <!-- OTP POPUP -->
 <div id="otpBox" class="otp-popup">
 
@@ -2770,6 +2787,16 @@ points: Number(points)
 }
 );
 
+await window.addDoc(
+window.collection(window.db,"pointsHistory"),
+{
+userId:userId,
+points:Number(points),
+action:"Add",
+date:new Date().getTime()
+}
+);
+
 alert("Update Done");
      
 alert("Points Added Successfully");
@@ -2806,6 +2833,16 @@ window.doc(window.db,"users",userId),
 points: newPoints
 }
 );
+
+await window.addDoc(
+window.collection(window.db,"pointsHistory"),
+{
+userId:userId,
+points:Number(points),
+action:"Remove",
+date:new Date().getTime()
+}
+);     
 
 alert("Points Removed Successfully");
 
