@@ -2701,6 +2701,10 @@ background:#fff;
 ➕ Add Points
 </button>
 
+<button onclick="viewUser('${doc.id}')">
+👁 View Details
+</button>
+
 </div>
 `;
 
@@ -2739,7 +2743,28 @@ searchUsers();
 window.searchUsers = searchUsers;
 window.addPoints = addPoints;     
      
+async function viewUser(userId){
 
+let userDoc = await window.getDoc(
+window.doc(window.db,"users",userId)
+);
+
+let data = userDoc.data();
+
+alert(
+"Name: " + (data.name || "") +
+"\nMobile: " + (data.mobile || "") +
+"\nPoints: " + (data.points || 0) +
+"\nLeads: " + (data.totalLeads || 0) +
+"\nUPI: " + (data.upi || "Not Added") +
+"\nReferral Code: " + (data.refCode || "")
+);
+
+}
+
+window.viewUser = viewUser;
+
+     
 async function openLeadDetails(){
 
 document.getElementById("adminPage")
