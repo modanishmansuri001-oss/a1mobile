@@ -2777,6 +2777,7 @@ async function addPoints(userId){
 let points = prompt("Kitne Points Add Karne Hai?");
 
 if(!points) return;
+  alert("Before History Save");
      
 alert("Update Start");
      
@@ -2844,6 +2845,8 @@ date:new Date().getTime()
 }
 );     
 
+alert("After History Save");
+     
 alert("Points Removed Successfully");
 
 searchUsers();
