@@ -2701,6 +2701,10 @@ background:#fff;
 ➕ Add Points
 </button>
 
+<button onclick="removePoints('${doc.id}')">
+➖ Remove Points
+</button>
+
 <button onclick="viewUser('${doc.id}')">
 👁 View Details
 </button>
@@ -2741,7 +2745,40 @@ searchUsers();
 
 
 window.searchUsers = searchUsers;
-window.addPoints = addPoints;     
+window.addPoints = addPoints;  
+     
+async function removePoints(userId){
+
+let points = prompt("Kitne Points Remove Karne Hai?");
+
+if(!points) return;
+
+let userDoc = await window.getDoc(
+window.doc(window.db,"users",userId)
+);
+
+let currentPoints = userDoc.data().points || 0;
+
+let newPoints = currentPoints - Number(points);
+
+if(newPoints < 0){
+newPoints = 0;
+}
+
+await window.updateDoc(
+window.doc(window.db,"users",userId),
+{
+points: newPoints
+}
+);
+
+alert("Points Removed Successfully");
+
+searchUsers();
+
+}
+
+window.removePoints = removePoints;
      
 async function viewUser(userId){
 
