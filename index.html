@@ -2874,12 +2874,12 @@ alert(
 window.viewUser = viewUser;
 
 
-     async function openHistoryPage(){
+     async function openPointsHistoryPage(){
 
 document.getElementById("adminPage")
 .classList.add("hidden");
 
-document.getElementById("historyPage")
+document.getElementById("pointsHistoryPage")
 .classList.remove("hidden");
 
 let snap = await window.getDocs(
@@ -2916,7 +2916,7 @@ document.getElementById("historyList").innerHTML = html;
 
 function backHistory(){
 
-document.getElementById("historyPage")
+document.getElementById("pointsHistoryPage")
 .classList.add("hidden");
 
 document.getElementById("adminPage")
@@ -2925,20 +2925,7 @@ document.getElementById("adminPage")
 }
 
 window.backHistory = backHistory;
-
-     
-function backHistory(){
-
-document.getElementById("historyPage")
-.classList.add("hidden");
-
-document.getElementById("adminPage")
-.classList.remove("hidden");
-
-}
-
-window.openHistoryPage = openHistoryPage;
-window.backHistory = backHistory;
+window.openPointsHistoryPage = openPointsHistoryPage;     
 
      
 async function openLeadDetails(){
