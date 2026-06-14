@@ -1924,43 +1924,36 @@ document.getElementById("dashboard")
 
 async function loadAdminData(){
 
-alert("Admin Start");
-
-let usersSnap;
-
 try{
 
-alert(typeof window.collection);
-alert(typeof window.getDocs);
-alert(typeof window.db);
- return;
+let usersSnap = await window.getDocs(
+window.collection(window.db,"users")
+);
 
-alert("Users Found = " + usersSnap.size);
-
-}catch(error){
-
-alert("ERROR = " + error.message);
-return;
-
-}
-     
 let totalUsers = usersSnap.size;
-
 let totalLeads = 0;
 let totalRewards = 0;
 
 usersSnap.forEach((doc)=>{
-let data = doc.data();
 
+let data = doc.data();
 
 totalLeads += Number(data.totalLeads || 0);
 totalRewards += Number(data.points || 0);
-});
 
+});
 
 document.getElementById("totalUsers").innerText = totalUsers;
 document.getElementById("totalLeads").innerText = totalLeads;
 document.getElementById("totalRewards").innerText = totalRewards;
+
+loadTeamList();
+
+}catch(error){
+
+alert("ADMIN ERROR = " + error.message);
+
+}
 
 }
 
