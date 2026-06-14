@@ -1926,9 +1926,11 @@ async function loadAdminData(){
 
 alert("Admin Start");
 
+let usersSnap;
+
 try{
 
-let usersSnap = await window.getDocs(
+usersSnap = await window.getDocs(
 window.collection(window.db,"users")
 );
 
@@ -1937,8 +1939,7 @@ alert("Users Found = " + usersSnap.size);
 }catch(error){
 
 alert("ERROR = " + error.message);
-
-}
+return;
 
 }
      
