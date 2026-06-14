@@ -2194,20 +2194,19 @@ document.getElementById("loginPage")
 
 <script type="module">
 
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-getFirestore,
-doc,
-getDoc,
-getDocs,
-collection,
-setDoc,
-updateDoc,
-addDoc
-} 
-from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+  getFirestore,
+  doc,
+  getDoc,
+  getDocs,
+  collection,
+  setDoc,
+  updateDoc,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1HR0-Oqk3OyKzPBmm6h541OrMRG0n1lA",
@@ -2221,19 +2220,17 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-alert("Firebase Connected");
 
-     
 window.db = db;
 window.doc = doc;
-console.log(doc);
-window.doc = doc;
 window.getDoc = getDoc;
-window.setDoc = setDoc;
-window.updateDoc = updateDoc;
 window.getDocs = getDocs;
 window.collection = collection;
+window.setDoc = setDoc;
+window.updateDoc = updateDoc;
 window.addDoc = addDoc;
+
+alert("Firebase Connected");
 console.log("Firebase Connected");
 function openRegister(){
 
