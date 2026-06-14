@@ -1096,7 +1096,7 @@ Back
 
 <h2>📜 Withdrawal History</h2>
 
-<div id="historyList"></div>
+<div id="withdrawHistoryList"></div>
 
 <button onclick="backProfile()">
 ← Back
@@ -2188,7 +2188,7 @@ getDoc,
 getDocs,
 collection,
 setDoc,
-updateDoc
+updateDoc,
 addDoc
 } 
 from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
@@ -2205,7 +2205,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+alert("Firebase Connected");
 
+     
 window.db = db;
 window.doc = doc;
 console.log(doc);
