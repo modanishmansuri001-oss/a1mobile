@@ -1923,11 +1923,12 @@ document.getElementById("dashboard")
 }
 
 async function loadAdminData(){
-
+alert("Admin Start");
+     
 let usersSnap = await window.getDocs(
 window.collection(window.db,"users")
 );
-
+alert("Users Found = " + usersSnap.size);
 let totalUsers = usersSnap.size;
 
 let totalLeads = 0;
