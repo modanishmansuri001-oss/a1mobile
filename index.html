@@ -1926,7 +1926,7 @@ async function loadAdminData(){
 try{
 
 let usersSnap = await window.getDocs(
-collection(window.db,"users")
+window.collection(window.db,"users")
 );
 
 let totalUsers = usersSnap.size;
@@ -1960,7 +1960,7 @@ alert("ADMIN ERROR = " + error.message);
 async function loadTeamList(){
 
 let usersSnap = await window.getDocs(
-collection(window.db,"users")
+window.collection(window.db,"users")
 );
 
 let html = "";
@@ -2318,7 +2318,7 @@ joined:new Date().toLocaleDateString()
 if(referralCode){
 
 const usersSnap = await getDocs(
-collection(window.db,"users")
+window.collection(window.db,"users")
 );
 
 usersSnap.forEach(async (userDoc)=>{
@@ -2402,7 +2402,7 @@ return;
 // 👇 यहीं Paste करो
 
 let pendingCheck = await getDocs(
-collection(window.db,"withdrawRequests")
+window.collection(window.db,"withdrawRequests")
 );
 
 let alreadyPending = false;
@@ -2470,7 +2470,7 @@ document.getElementById("withdrawAdminPage")
 .classList.remove("hidden");
 
 let snap = await getDocs(
-collection(window.db,"withdrawRequests")
+window.collection(window.db,"withdrawRequests")
 );
 
 let html = "";
@@ -2610,7 +2610,7 @@ window.loadWithdrawalHistory = async function() {
   document.getElementById("historyList");
 
   let snapshot = await getDocs(
-    collection(window.db, "withdrawRequests")
+    window.collection(window.db, "withdrawRequests")
   );
   let html = "";
 
@@ -2701,7 +2701,7 @@ let search = document.getElementById("searchUser")
 .value.toLowerCase();
 
 let snap = await window.getDocs(
-collection(window.db,"users")
+window.collection(window.db,"users")
 );
 
 let html = "";
@@ -2798,7 +2798,7 @@ points: Number(points)
 );
 
 await window.addDoc(
-collection(window.db,"pointsHistory"),
+window.collection(window.db,"pointsHistory"),
 {
 userId:userId,
 points:Number(points),
@@ -2847,7 +2847,7 @@ points: newPoints
 
  try{    
 await window.addDoc(
-collection(window.db,"pointsHistory"),
+window.collection(window.db,"pointsHistory"),
 {
 userId:userId,
 points:Number(points),
@@ -2897,7 +2897,7 @@ document.getElementById("pointsHistoryPage")
 .classList.remove("hidden");
 
 let snap = await window.getDocs(
-collection(window.db,"pointsHistory")
+window.collection(window.db,"pointsHistory")
 );
 
 let html = "";
@@ -2951,7 +2951,7 @@ document.getElementById("leadDetailsPage")
 .classList.remove("hidden");
 
 let snap = await window.getDocs(
-collection(window.db,"verifiedNumbers")
+window.collection(window.db,"verifiedNumbers")
 );
 
 let html = "";
