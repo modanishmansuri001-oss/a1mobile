@@ -2799,22 +2799,25 @@ points: Number(points)
 }
 );
 
-await window.addDoc(
-window.collection(window.db,"pointsHistory"),
-{
-userId:userId,
-points:Number(points),
-action:"Add",
-date:new Date().getTime()
-}
-);
+try{
+ await window.addDoc(
+   window.collection(window.db,"pointsHistory"),
+   {
+     userId:userId,
+     points:Number(points),
+     action:"Remove",
+     date:new Date().getTime()
+   }
+ );
 
-alert("Update Done");
-     
-alert("Points Added Successfully");
+ alert("After History Save");
+ alert("Points Removed Successfully");
 
-searchUsers();
+ searchUsers();
 
+}catch(error){
+ console.log(error);
+ alert(error.message);
 }
 
 
