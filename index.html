@@ -2798,7 +2798,7 @@ points: Number(points)
 );
 
 await window.addDoc(
-window.collection(window.db,"pointsHistory"),
+collection(window.db,"pointsHistory"),
 {
 userId:userId,
 points:Number(points),
@@ -2847,7 +2847,7 @@ points: newPoints
 
  try{    
 await window.addDoc(
-window.collection(window.db,"pointsHistory"),
+collection(window.db,"pointsHistory"),
 {
 userId:userId,
 points:Number(points),
@@ -2897,7 +2897,7 @@ document.getElementById("pointsHistoryPage")
 .classList.remove("hidden");
 
 let snap = await window.getDocs(
-window.collection(window.db,"pointsHistory")
+collection(window.db,"pointsHistory")
 );
 
 let html = "";
@@ -2951,7 +2951,7 @@ document.getElementById("leadDetailsPage")
 .classList.remove("hidden");
 
 let snap = await window.getDocs(
-window.collection(window.db,"verifiedNumbers")
+collection(window.db,"verifiedNumbers")
 );
 
 let html = "";
