@@ -2842,13 +2842,18 @@ if(newPoints < 0){
 newPoints = 0;
 }
 
+  let userDoc = await window.getDoc(
+window.doc(window.db,"users",userId)
+);
+
+let currentPoints = userDoc.data().points || 0;
+
 await window.updateDoc(
 window.doc(window.db,"users",userId),
 {
-points: newPoints
+points: currentPoints + Number(points)
 }
-);
-
+);   
 
  try{    
 await window.addDoc(
