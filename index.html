@@ -2832,7 +2832,6 @@ window.addPoints = addPoints;
 async function removePoints(userId){
 
 let points = prompt("Kitne Points Remove Karne Hai?");
-
 if(!points) return;
 
 let userDoc = await window.getDoc(
@@ -2844,42 +2843,39 @@ let currentPoints = userDoc.data().points || 0;
 let newPoints = currentPoints - Number(points);
 
 if(newPoints < 0){
-newPoints = 0;
+   newPoints = 0;
 }
-
-  let userDoc = await window.getDoc(
-window.doc(window.db,"users",userId)
-);
-
-let currentPoints = userDoc.data().points || 0;
 
 await window.updateDoc(
 window.doc(window.db,"users",userId),
 {
-points: currentPoints + Number(points)
+   points:newPoints
 }
-);   
+);
 
- try{    
-await window.addDoc(
-collection(window.db,"pointsHistory"),
-{
-userId:userId,
-points:Number(points),
-action:"Remove",
-date:new Date().getTime()
+try{
+
+   await window.addDoc(
+      collection(window.db,"pointsHistory"),
+      {
+         userId:userId,
+         points:Number(points),
+         action:"Remove",
+         date:new Date().getTime()
+      }
+   );
+
+   alert("Points Removed Successfully");
+   searchUsers();
+
+}catch(error){
+
+   console.log(error);
+   alert(error.message);
+
 }
-);     
-
-alert("After History Save");
-     
-alert("Points Removed Successfully");
-
-searchUsers();
 
 }
-
-window.removePoints = removePoints;
      
 async function viewUser(userId){
 
