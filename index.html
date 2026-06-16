@@ -1167,7 +1167,7 @@ border-radius:10px;
 box-sizing:border-box;
 ">
 
-<div id="searchResults"></div>
+<div id="searchResults" style="display:none;"></div>
 
      <button onclick="openPointsHistoryPage()">
 📜 Points History
@@ -2783,6 +2783,12 @@ border-radius:8px;
 });
 
 document.getElementById("searchResults").innerHTML = html;
+
+     if(html !== ""){
+   document.getElementById("searchResults").style.display = "block";
+}else{
+   document.getElementById("searchResults").style.display = "none";
+     }
 
 }
 
