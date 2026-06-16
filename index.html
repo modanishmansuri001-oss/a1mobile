@@ -2223,13 +2223,11 @@ console.log("collection =", collection);
 console.log("typeof collection =", typeof collection);
 console.log("window.collection =", window.collection);
      
-     alert("collection = " + typeof collection);
-alert("window.collection = " + typeof window.collection);
 window.setDoc = setDoc;
 window.updateDoc = updateDoc;
 window.addDoc = addDoc;
 
-alert("DANISH TEST");
+
 console.log("Firebase Connected");
 function openRegister(){
 
@@ -2810,7 +2808,7 @@ try{
    {
      userId:userId,
      points:Number(points),
-     action:"Remove",
+     action:"Add",
      date:new Date().getTime()
    }
  );
