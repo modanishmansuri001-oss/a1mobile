@@ -797,6 +797,24 @@ margin-top:8px;
 font-size:22px;
 font-weight:bold;
 }
+
+.admin-tools{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:15px;
+}
+
+.admin-tools button{
+height:55px;
+border:none;
+border-radius:15px;
+font-size:14px;
+font-weight:bold;
+background:#fff;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+color:#333;
+}
        
   </style>
 <link rel="manifest" href="manifest.json">
@@ -1137,54 +1155,20 @@ Back
 </div>
 
 <button onclick="openWithdrawAdmin()">
-📋 Withdraw Requests
-</button>
 
-<button onclick="loadAdminData()">
-🔄 Refresh Data
-</button>
+<div class="admin-tools">
 
-<h3>👥 Team Members</h3>
+<button>💸 Withdraw</button>
+<button>🔄 Refresh</button>
+<button>👥 Team</button>
 
-<button onclick="openTeamPage()">
-👥 Team Members
-</button>
-</div>
+<button>🔍 Search</button>
+<button>📜 History</button>
+<button>📱 Leads</button>
 
- <h3>🔍 Search User</h3>
-
-<input
-id="searchUser"
-type="text"
-placeholder="Enter Name or Mobile Number"
-onkeyup="searchUsers()"
-style="
-width:100%;
-padding:12px;
-margin-bottom:10px;
-border:1px solid #ddd;
-border-radius:10px;
-box-sizing:border-box;
-">
-
-<div id="searchResults" style="display:none;"></div>
-
-     <button onclick="openPointsHistoryPage()">
-📜 Points History
-     </button>
-
-<button onclick="openLeadDetails()">
-📱 Lead Details
-</button>
-
-<button onclick="backAdmin()">
-⬅ Back
-</button>
+<button>⬅ Back</button>
 
 </div>
-
-</div>
-
 
 <div id="pointsHistoryPage" class="hidden">
      
