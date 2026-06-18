@@ -2192,6 +2192,18 @@ document.getElementById("loginPage")
 
 <script type="module">
 
+     function backDashboard(){
+
+document.getElementById("profilePage")
+.classList.add("hidden");
+
+document.getElementById("dashboard")
+.classList.remove("hidden");
+
+}
+
+window.backDashboard = backDashboard;
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
@@ -2618,7 +2630,7 @@ openWithdrawAdmin();
 window.loadWithdrawalHistory = async function() {
 
   let historyDiv =
-  document.getElementById("historyList");
+document.getElementById("withdrawHistoryList");
 
   let snapshot = await getDocs(
     collection(window.db, "withdrawRequests")
