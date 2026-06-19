@@ -1176,7 +1176,10 @@ Back
 
 <div class="quick-actions">
 
-<div class="action-card" onclick="alert('BUTTON CLICK');openWithdrawAdmin()">
+<div class="action-card" onclick="openWithdrawAdmin()">
+💸
+<span>Withdraw</span>
+</div>
 
 <div class="action-card" onclick="loadAdminData()">
 🔄
@@ -1196,7 +1199,6 @@ Back
 <div class="action-card" onclick="openLeadDetails()">
 📱
 <span>Leads</span>
-     
 </div>
 
 </div>
@@ -1867,20 +1869,15 @@ document.getElementById("adminPage")
 
 }
 
-function openWithdrawAdmin(){
+window.openWithdrawAdmin = async function(){
+   document.getElementById("adminPage")
+   .classList.add("hidden");
 
-alert("STEP 1");
+   document.getElementById("withdrawAdminPage")
+   .classList.remove("hidden");
 
-return;
-
-document.getElementById("adminPage")
-.classList.add("hidden");
-
-document.getElementById("withdrawAdminPage")
-.classList.remove("hidden");
-
-     }
-    window.openWithdrawAdmin = openWithdrawAdmin;
+   ...
+}
 
 function openAdminLogin(){
 
