@@ -2487,6 +2487,7 @@ let snap = await getDocs(
 collection(window.db,"withdrawRequests")
 );
 alert("After Firebase");
+     alert("Docs Count = " + snap.size);
 let html = "";
 
 snap.forEach((doc)=>{
