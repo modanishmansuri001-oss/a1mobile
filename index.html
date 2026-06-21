@@ -2475,6 +2475,7 @@ let currentFilter = "pending";
 window.openWithdrawAdmin = async function(){
      
  alert("Withdraw Button Working");
+     alert("Before Firebase");
   
   document.getElementById("adminPage")
 .classList.add("hidden");
@@ -2485,7 +2486,7 @@ document.getElementById("withdrawAdminPage")
 let snap = await getDocs(
 collection(window.db,"withdrawRequests")
 );
-
+alert("After Firebase");
 let html = "";
 
 snap.forEach((doc)=>{
